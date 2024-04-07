@@ -47,8 +47,13 @@ const characterLength = characters.reduce((acc,ch)=> acc+ ch.name.split(' ')[0].
 console.log(characterLength)
 
 // Get the total number of characters by eye color (hint. a map of eye color to count)
-const eyeCharacters = characters.reduce((acc,ch)=>acc+ch.eye_color.length,0)
-console.log(eyeCharacters)
+const eyeColorCount = characters.reduce((acc, character) => {
+  const eyeColor = character.eye_color;
+  acc[eyeColor] = (acc[eyeColor] || 0) + 1;
+  return acc;
+}, {});
+
+console.log(eyeColorCount);
 
 // Get characters with mass greater than 100
 const character100 = characters.filter((ch)=>ch.mass > 100)
